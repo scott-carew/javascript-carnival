@@ -46,6 +46,10 @@ showMole()
 function whackedMole() {
   //Remove the image element when the function is called.
   document.getElementById('mole').remove()
+  //Add a sound effect that plays when the mole is clicked.
+  const audio = new Audio()
+  audio.src = 'whack-audio.wav'
+  audio.play()
   showMole()
   // console.log('You clicked the mole')
 }

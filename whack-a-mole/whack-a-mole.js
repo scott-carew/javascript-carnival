@@ -25,10 +25,26 @@ const randomCell = cellsArray[randomIndex]
 console.log(randomCell)
 
 // // A way to show a mole in the chosen cell.
-function showMole(randomCell) {
+function showMole(cell) {
+  //Create an image tag.
   const img = document.createElement('img')
+  //Set the image source.
   img.src = 'mole.png'
+  //Create an ID for the image
+  img.id = 'mole'
+  //Set the image to the random cell.
   randomCell.appendChild(img)
 }
 
 showMole(randomCell)
+
+//Add an onClick method that calls a whackedMole function when image is clicked
+document.getElementById('mole').onclick = function () {
+  whackedMole()
+}
+
+function whackedMole() {
+  console.log('You clicked the mole')
+}
+//Remove the mole from the current cell.
+//Reuse code wr

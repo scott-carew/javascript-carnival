@@ -16,38 +16,38 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
-// //Create a randomIndex variable set to the value of our random number.
-const randomIndex = getRandomNumber(0, 25)
-console.log(randomIndex)
-
-// //Create a variable for the random cell to be equal to the index position of the random number in our cell array.
-const randomCell = cellsArray[randomIndex]
-console.log(randomCell)
-
-// // A way to show a mole in the chosen cell.
-function showMole(cell) {
+// A way to show a mole in the chosen cell.
+function showMole() {
+  // Create a randomIndex variable set to the value of our random number. Include this inside the function so that it can generate each time the function is run.
+  let randomIndex = getRandomNumber(0, 25)
+  console.log(randomIndex)
+  // //Create a variable for the random cell to be equal to the index position of the random number in our cell array.
+  let randomCell = cellsArray[randomIndex]
+  console.log(randomCell)
   //Create an image tag.
   const img = document.createElement('img')
   //Set the image source.
   img.src = 'mole.png'
-  //Create an ID for the image
+  img.style.width = '100px'
+  img.style.height = '100px'
+  //Create an ID for the image which we can target in our onclick method.
   img.id = 'mole'
   //Set the image to the random cell.
   randomCell.appendChild(img)
+  //Add an onClick method that calls a whackedMole function when image is clicked. Keep this inside the function so it works each time the function is run.
+  document.getElementById('mole').onclick = function () {
+    whackedMole()
+  }
 }
 
-showMole(randomCell)
-
-//Add an onClick method that calls a whackedMole function when image is clicked
-document.getElementById('mole').onclick = function () {
-  whackedMole()
-}
+showMole()
 
 //Declare a whackedMole function.
 function whackedMole() {
   //Remove the image element when the function is called.
   document.getElementById('mole').remove()
+  showMole()
   // console.log('You clicked the mole')
 }
-//Remove the mole from the current cell.
-//Reuse code wr
+
+//Possibility to try another way - Use a conditional so if the user clicks anything, it will check if the image is there and remove it if this is the case.

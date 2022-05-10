@@ -43,8 +43,11 @@ document.getElementById('mole').onclick = function () {
   whackedMole()
 }
 
+//Declare a whackedMole function.
 function whackedMole() {
-  console.log('You clicked the mole')
+  //Remove the image element when the function is called.
+  document.getElementById('mole').remove()
+  // console.log('You clicked the mole')
 }
 //Remove the mole from the current cell.
 //Reuse code wr

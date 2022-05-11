@@ -5,54 +5,41 @@
 console.log('Dress The Clown!')
 
 //Create a variable to store the current number of the head image. Store it outside so it can be increased each time the function is called, and used in other functions.
-let headIndex = 0
+let bodyPartIndex = 0
 
 //Create a variable to track which body part you are selecting clothing for.
 let clothingIndex = 0
 
 //Write a function that can change the head image.
-function changeClownHead() {
+function changeClothes() {
   //Create a variable to store the string.
-  let headSrc = './images/head' + headIndex + '.png'
+  let headSrc = './images/head' + bodyPartIndex + '.png'
   //Create a head variable and set it to the element with ID head
   let head = document.getElementById('head')
   //Replace the image.
   head.src = headSrc
-  //Call a function to check headIndex.
-  // checkHeadIndex()
-  // console.log(checkHeadIndex)
-  // console.log(headIndex)
 }
-
-//Create a function to check head index.
-// function checkHeadIndex() {
-//   if (headIndex > 5) {
-//     headIndex = 0
-//   } else if (headIndex === 0) {
-//     headIndex = 5
-//   }
-// }
 
 //Create an eventListener which will be used to bind the keydown event to the function calling.
 document.addEventListener('keydown', function (event) {
   switch (event.code) {
     //Use the right arrow key to call the function changeClownHead()
     case 'ArrowRight':
-      changeClownHead()
+      changeClothes()
       if (headIndex < 5) {
-        headIndex++
+        bodyPartIndex++
       } else {
-        headIndex = 0
+        bodyPartIndex = 0
       }
       break
     case 'ArrowLeft':
-      changeClownHead()
+      changeClothes()
       //Set a condition to ensure the index variable decreases on keydown providing the number is greater than zero.
-      if (headIndex < 6 && headIndex > 0) {
-        headIndex--
+      if (bodyPartIndex < 6 && bodyPartIndex > 0) {
+        bodyPartIndex--
         //Reset the index to 5 if the variable reaches zero
       } else {
-        headIndex = 5
+        bodyPartIndex = 5
       }
       break
     case 'ArrowUp':

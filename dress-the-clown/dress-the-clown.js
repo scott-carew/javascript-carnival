@@ -15,9 +15,19 @@ function changeClownHead() {
   let head = document.getElementById('head')
   //Replace the image.
   head.src = headSrc
-  //Increase the headIndex count
-  headIndex++
+  //Call a function to check headIndex.
+  checkHeadIndex()
+  console.log(checkHeadIndex)
   console.log(headIndex)
+}
+
+//Create a function to check head index.
+function checkHeadIndex() {
+  if (headIndex === 5) {
+    headIndex = 0
+  } else {
+    headIndex++
+  }
 }
 
 //Create an eventListener which will be used to bind the keydown event to the function calling.

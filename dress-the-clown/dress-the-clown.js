@@ -12,24 +12,36 @@ let clothingIndex = 0
 
 //Write a function that can change the head image.
 function changeClothes() {
-  //Create a variable to store the string.
+  //Create a variable to store the string which corresponds to the image.
   let headSrc = './images/head' + bodyPartIndex + '.png'
-  //Create a head variable and set it to the element with ID head
+  let bodySrc = './images/body' + bodyPartIndex + '.png'
+  let shoesSrc = './images/shoes' + bodyPartIndex + '.png'
+  //Create a variable for each bodypart and set it to the element with ID from HTML
   let head = document.getElementById('head')
-  //Replace the image.
-  head.src = headSrc
+  let body = document.getElementById('body')
+  let shoes = document.getElementById('shoes')
+  //Set the image based on the clothingIndex.
+  if (clothingIndex == 0) {
+    head.src = headSrc
+  } else if (clothingIndex == 1) {
+    body.src = bodySrc
+  } else if (clothingIndex == 2) {
+    shoes.src = shoesSrc
+  }
 }
 
-//Create an eventListener which will be used to bind the keydown event to the function calling.
+//Create an eventListener which will be used to bind the keydown event to the function calling and set restrictions.
 document.addEventListener('keydown', function (event) {
   switch (event.code) {
-    //Use the right arrow key to call the function changeClownHead()
+    //Use the right arrow key to call the function changeClothes()
     case 'ArrowRight':
       changeClothes()
-      if (headIndex < 5) {
+      if (bodyPartIndex < 5) {
         bodyPartIndex++
+        console.log('bodyPartIndex is ' + bodyPartIndex)
       } else {
         bodyPartIndex = 0
+        console.log('bodyPartIndex is ' + bodyPartIndex)
       }
       break
     case 'ArrowLeft':
@@ -37,9 +49,11 @@ document.addEventListener('keydown', function (event) {
       //Set a condition to ensure the index variable decreases on keydown providing the number is greater than zero.
       if (bodyPartIndex < 6 && bodyPartIndex > 0) {
         bodyPartIndex--
+        console.log('bodyPartIndex is ' + bodyPartIndex)
         //Reset the index to 5 if the variable reaches zero
       } else {
         bodyPartIndex = 5
+        console.log('bodyPartIndex is ' + bodyPartIndex)
       }
       break
     case 'ArrowUp':

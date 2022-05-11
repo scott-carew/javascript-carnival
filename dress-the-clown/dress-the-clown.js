@@ -7,6 +7,9 @@ console.log('Dress The Clown!')
 //Create a variable to store the current number of the head image. Store it outside so it can be increased each time the function is called, and used in other functions.
 let headIndex = 0
 
+//Create a variable to track which body part you are selecting clothing for.
+let clothingIndex = 0
+
 //Write a function that can change the head image.
 function changeClownHead() {
   //Create a variable to store the string.
@@ -18,7 +21,7 @@ function changeClownHead() {
   //Call a function to check headIndex.
   // checkHeadIndex()
   // console.log(checkHeadIndex)
-  console.log(headIndex)
+  // console.log(headIndex)
 }
 
 //Create a function to check head index.
@@ -52,5 +55,24 @@ document.addEventListener('keydown', function (event) {
         headIndex = 5
       }
       break
+    case 'ArrowUp':
+      //Set a condition to toggle the clothing index UP on keydown.
+      if (clothingIndex < 2) {
+        clothingIndex++
+        console.log('clothingIndex is ' + clothingIndex)
+      } else {
+        clothingIndex = 0
+        console.log('clothingIndex is ' + clothingIndex)
+      }
+      break
+    case 'ArrowDown':
+      //Set a condition to toggle the clothing index DOWN on keydown.
+      if (clothingIndex < 3 && clothingIndex > 0) {
+        clothingIndex--
+        console.log('clothingIndex is ' + clothingIndex)
+      } else {
+        clothingIndex = 2
+        console.log('clothingIndex is ' + clothingIndex)
+      }
   }
 })

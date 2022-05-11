@@ -16,19 +16,19 @@ function changeClownHead() {
   //Replace the image.
   head.src = headSrc
   //Call a function to check headIndex.
-  checkHeadIndex()
-  console.log(checkHeadIndex)
+  // checkHeadIndex()
+  // console.log(checkHeadIndex)
   console.log(headIndex)
 }
 
 //Create a function to check head index.
-function checkHeadIndex() {
-  if (headIndex === 5) {
-    headIndex = 0
-  } else {
-    headIndex++
-  }
-}
+// function checkHeadIndex() {
+//   if (headIndex > 5) {
+//     headIndex = 0
+//   } else if (headIndex === 0) {
+//     headIndex = 5
+//   }
+// }
 
 //Create an eventListener which will be used to bind the keydown event to the function calling.
 document.addEventListener('keydown', function (event) {
@@ -36,10 +36,21 @@ document.addEventListener('keydown', function (event) {
     //Use the right arrow key to call the function changeClownHead()
     case 'ArrowRight':
       changeClownHead()
+      if (headIndex < 5) {
+        headIndex++
+      } else {
+        headIndex = 0
+      }
+      break
+    case 'ArrowLeft':
+      changeClownHead()
+      //Set a condition to ensure the index variable decreases on keydown providing the number is greater than zero.
+      if (headIndex < 6 && headIndex > 0) {
+        headIndex--
+        //Reset the index to 5 if the variable reaches zero
+      } else {
+        headIndex = 5
+      }
       break
   }
 })
-
-// changeClownHead()
-// changeClownHead()
-// changeClownHead()

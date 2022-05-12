@@ -4,8 +4,8 @@
 
 console.log('Dress The Clown!')
 
-//Create a variable to store the current number of the head image. Store it outside so it can be increased each time the function is called, and used in other functions.
-let bodyPartIndex = 0
+//Create a variable to store the current number of the head image. Store it outside so it can be increased each time the function is called, and used in other functions. Setting this to -1 will ensure that when you call the function, picture 0 will be the first image to display.
+let bodyPartIndex = -1
 
 //Create a variable to track which body part you are selecting clothing for.
 let clothingIndex = 0
@@ -35,7 +35,6 @@ document.addEventListener('keydown', function (event) {
   switch (event.code) {
     //Use the right arrow key to call the function changeClothes()
     case 'ArrowRight':
-      changeClothes()
       if (bodyPartIndex < 5) {
         bodyPartIndex++
         console.log('bodyPartIndex is ' + bodyPartIndex)
@@ -43,9 +42,9 @@ document.addEventListener('keydown', function (event) {
         bodyPartIndex = 0
         console.log('bodyPartIndex is ' + bodyPartIndex)
       }
+      changeClothes()
       break
     case 'ArrowLeft':
-      changeClothes()
       //Set a condition to ensure the index variable decreases on keydown providing the number is greater than zero.
       if (bodyPartIndex < 6 && bodyPartIndex > 0) {
         bodyPartIndex--
@@ -55,6 +54,7 @@ document.addEventListener('keydown', function (event) {
         bodyPartIndex = 5
         console.log('bodyPartIndex is ' + bodyPartIndex)
       }
+      changeClothes()
       break
     case 'ArrowUp':
       //Set a condition to toggle the clothing index UP on keydown.

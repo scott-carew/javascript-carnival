@@ -59,7 +59,7 @@ document.addEventListener('keydown', function (event) {
     case 'ArrowUp':
       //Set a condition to toggle the clothing index UP on keydown.
       if (clothingIndex < 2) {
-        clothingIndex++
+        clothingIndex++ 
         console.log('clothingIndex is ' + clothingIndex)
       } else {
         clothingIndex = 0

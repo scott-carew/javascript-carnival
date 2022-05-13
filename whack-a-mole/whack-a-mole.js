@@ -16,6 +16,9 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min
 }
 
+//Create a mole counter and set it to zero
+let whackedMoleCount = 0
+
 // A way to show a mole in the chosen cell.
 function showMole() {
   // Create a randomIndex variable set to the value of our random number. Include this inside the function so that it can generate each time the function is run.
@@ -27,9 +30,9 @@ function showMole() {
   //Create an image tag.
   const img = document.createElement('img')
   //Set the image source.
-  img.src = 'mole.png'
-  img.style.width = '100px'
-  img.style.height = '100px'
+  img.src = 'mole.PNG'
+  img.style.width = '75px'
+  img.style.height = '75px'
   //Create an ID for the image which we can target in our onclick method.
   img.id = 'mole'
   //Set the image to the random cell.
@@ -37,6 +40,11 @@ function showMole() {
   //Add an onClick method that calls a whackedMole function when image is clicked. Keep this inside the function so it works each time the function is run.
   document.getElementById('mole').onclick = function () {
     whackedMole()
+    //Increment the whackedMoleCount after the whackedMoleFunction
+    whackedMoleCount++
+    //Call the update counter function to update the whackedMoleCount
+    updateCounter(whackedMoleCount)
+    console.log('whackedMoleCount is ' + whackedMoleCount)
   }
 }
 
@@ -55,3 +63,13 @@ function whackedMole() {
 }
 
 //Possibility to try another way - Use a conditional so if the user clicks anything, it will check if the image is there and remove it if this is the case.
+
+//Create a variable which will be used to display our whackedMoleCounter. Give it an ID, and set the inner HTML.
+const whackedMoleCounter = document.createElement('h2')
+whackedMoleCounter.id = 'counter'
+whackedMoleCounter.innerHTML = 'Whacked Mole Count: ' + whackedMoleCount
+document.body.appendChild(whackedMoleCounter)
+
+function updateCounter(whackedMoleCount) {
+  whackedMoleCounter.innerHTML = 'Whacked Mole Count: ' + whackedMoleCount
+}

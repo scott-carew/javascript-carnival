@@ -35,7 +35,7 @@ document.addEventListener('keydown', function (event) {
   switch (event.code) {
     //Use the right arrow key to call the function changeClothes()
     case 'ArrowRight':
-      if (bodyPartIndex < 5) {
+      if (bodyPartIndex < 6) {
         bodyPartIndex++
         console.log('bodyPartIndex is ' + bodyPartIndex)
       } else {
@@ -46,12 +46,12 @@ document.addEventListener('keydown', function (event) {
       break
     case 'ArrowLeft':
       //Set a condition to ensure the index variable decreases on keydown providing the number is greater than zero.
-      if (bodyPartIndex < 6 && bodyPartIndex > 0) {
+      if (bodyPartIndex < 7 && bodyPartIndex > 0) {
         bodyPartIndex--
         console.log('bodyPartIndex is ' + bodyPartIndex)
         //Reset the index to 5 if the variable reaches zero
       } else {
-        bodyPartIndex = 5
+        bodyPartIndex = 6
         console.log('bodyPartIndex is ' + bodyPartIndex)
       }
       changeClothes()
@@ -59,7 +59,7 @@ document.addEventListener('keydown', function (event) {
     case 'ArrowUp':
       //Set a condition to toggle the clothing index UP on keydown.
       if (clothingIndex < 2) {
-        clothingIndex++ 
+        clothingIndex++
         console.log('clothingIndex is ' + clothingIndex)
       } else {
         clothingIndex = 0

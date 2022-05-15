@@ -52,6 +52,7 @@ showMole()
 
 //Declare a whackedMole function.
 function whackedMole() {
+  startTimer()
   //Remove the image element when the function is called.
   document.getElementById('mole').remove()
   //Add a sound effect that plays when the mole is clicked.
@@ -72,4 +73,32 @@ document.body.appendChild(whackedMoleCounter)
 
 function updateCounter(whackedMoleCount) {
   whackedMoleCounter.innerHTML = 'Whacked Mole Count: ' + whackedMoleCount
+}
+
+//Add a timer to the page
+
+let timer
+let timeLeft = 10
+
+const countdownElement = document.createElement('h3')
+countdownElement.innerHTML = `You have ${timeLeft} seconds remaining`
+document.body.appendChild(countdownElement)
+
+function gameOver() {
+  clearInterval(timer)
+  // alert(`Congratulations! You Whacked ${whackedMoleCount} moles!`)
+}
+
+function updateTimer() {
+  timeLeft = timeLeft - 1
+  if (timeLeft >= 0) {
+    countdownElement.innerHTML = `You have ${timeLeft} seconds remaining`
+  } else {
+    gameOver()
+  }
+}
+
+function startTimer() {
+  timer = setInterval(updateTimer, 1000)
+  updateTimer()
 }

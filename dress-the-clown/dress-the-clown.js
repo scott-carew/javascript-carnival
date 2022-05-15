@@ -10,6 +10,22 @@ let bodyPartIndex = -1
 //Create a variable to track which body part you are selecting clothing for.
 let clothingIndex = 0
 
+//Create an instructions variable which will show the user what body part they are working on.
+let instructions = document.getElementById('instructions')
+let bodyPart = document.getElementById('bodyPart')
+instructions.innerHTML =
+  'Use UP/DOWN arrows to change the body part. Use LEFT/RIGHT arrows to change clothes.'
+
+function updateClothingText() {
+  if (clothingIndex == 0) {
+    bodyPart.innerHTML = 'Currently selected: head'
+  } else if (clothingIndex == 1) {
+    bodyPart.innerHTML = 'Currently selected: body'
+  } else if (clothingIndex == 2) {
+    bodyPart.innerHTML = 'Currently selected: shoes'
+  }
+}
+
 //Write a function that can change the head image.
 function changeClothes() {
   //Create a variable to store the string which corresponds to the image.
@@ -60,9 +76,11 @@ document.addEventListener('keydown', function (event) {
       //Set a condition to toggle the clothing index UP on keydown.
       if (clothingIndex < 2) {
         clothingIndex++
+        updateClothingText()
         console.log('clothingIndex is ' + clothingIndex)
       } else {
         clothingIndex = 0
+        updateClothingText()
         console.log('clothingIndex is ' + clothingIndex)
       }
       break
@@ -70,9 +88,11 @@ document.addEventListener('keydown', function (event) {
       //Set a condition to toggle the clothing index DOWN on keydown.
       if (clothingIndex < 3 && clothingIndex > 0) {
         clothingIndex--
+        updateClothingText()
         console.log('clothingIndex is ' + clothingIndex)
       } else {
         clothingIndex = 2
+        updateClothingText()
         console.log('clothingIndex is ' + clothingIndex)
       }
   }
